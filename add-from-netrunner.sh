@@ -23,7 +23,7 @@
 
 # 14
 # From Frontier PPA
-apt-get install firefox firefox-kde-support plasma-widget-folderview plasma-widget-homerun libhomerun0 kde-config-gtk-style samba-mounter akonadi-facebook kdepim-runtime libkfbapi1 libmailtransport4 expanding-icons-taskmanager plasma-widget-smooth-tasks kio-sysinfo ksuperkey kubuntu-qtquick1-components simplescreenrecorder plasma-widget-toggle-panel
+apt-get install firefox firefox-kde-support plasma-widget-folderview plasma-widget-homerun libhomerun0 kde-config-gtk-style samba-mounter akonadi-facebook kdepim-runtime libkfbapi1 libmailtransport4 expanding-icons-taskmanager plasma-widget-smooth-tasks kio-sysinfo ksuperkey kubuntu-qtquick1-components simplescreenrecorder plasma-widget-toggle-panel rootactions-servicemenu
 # Codecs and Flashplayer
 apt-get install kubuntu-restricted-extras ubuntu-restricted-extras libav-tools kffmpegthumbnailer
 # Universe
