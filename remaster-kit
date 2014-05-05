@@ -1,0 +1,227 @@
+#!/bin/bash
+# 
+#### REMASTER-KIT #####
+#  Version 1.7       #
+# by Leszek Lesner   #
+#######################
+# License :   BSD
+#
+#
+VER=`awk 'NR==1' /etc/remaster-kit-config`
+SQFS=`awk 'NR==2' /etc/remaster-kit-config`
+MKISOFS="genisoimage"  # Set the mkisofs command here. On newer distributions it is called genisoimage
+
+help1() {
+	echo "usage: remaster-kit [create][open][chroot][build][buildiso][hybridiso][clean][remove] [merge] <projectname> <isoname> <Volumename> <isoname>"
+	echo ""
+	echo "create"
+	echo "<projectname> <isoname> - Create Project for IsoFile (isoname)"
+	echo "open"
+	echo "<projectname> - CD and Open Project folder in FileManager"
+	echo "chroot - Chroots into the live system for manipulating"
+	echo "build"
+	echo "<Volumename> <isoname> - Create squashfs live system and build iso"
+	echo "buildiso"
+	echo "<Volumename> <isoname> - Rebuild just the iso without squashing the live system"
+	echo "hybridiso"
+	echo "<isoname> - Create an hybrid iso"
+	echo "clean - remove temporary files and unmount (usually used after create)"
+	echo "remove"
+	echo "<projectname> - remove all the project files"
+	echo "merge"
+	echo "<path+snapshotfilename> - Merge snapshot into projects live system"
+	echo "save-live"
+	echo "<path-to-projectdirectory> - Save Live Configuration as new live system"
+	echo " "
+	echo "Remaster-Kit Version 1.7 by Leszek Lesner licensed under BSD"
+}
+
+# Main IF
+if [ $# -lt 1 ] || [ $1 = "-help" ] || [ $1 = "-h" ]; then
+	help1
+else
+	if [ $1 = "create" ]; then
+		if [ $# -lt 3 ]; then
+			help1
+		else
+			mkdir -p $2 		# create project directory
+			ln -s $(pwd)/$3 $2/ 	# link ISO to project directory
+			cd $2
+			mkdir -p edit squashfs extract-cd mnt # create project subdirectories
+			echo "Created working directories"
+			sudo mount -o loop $3 mnt # mount iso
+			if [ $? -ne 0 ]; then
+				echo "Error mounting ISO"
+			else
+				echo "Mounted ISO"
+				sudo rsync --exclude=/$VER/filesystem.squashfs -a mnt/ extract-cd # copy cd content
+				echo "Copied files from mounted livecd to working directory"
+				sudo mount -t squashfs -o loop mnt/$VER/filesystem.squashfs squashfs # mounting live filesystem
+				echo "Mounted Squashfs"
+				echo "Copying files from squashfs to working directory..."
+				sudo cp -a squashfs/* edit/ # copy live filesystem
+				echo "Copy completed"
+				echo ""
+				echo "You may now chroot in edit and start customize the livesystem"
+			fi # Mount if
+		fi # create arguments if
+	fi # create if
+	if [ $1 = "open" ]; then
+		if [ -d $2 ] 
+		then
+			$(/usr/bin/magi-kit.py --show filemanager) $2   # If you are above the project directory
+		elif [ -d "../${2}" ]
+		then
+			$(/usr/bin/magi-kit.py --show filemanager) "../${2}" # If you are in the project directory
+		fi
+	fi # open if
+	if [ $1 = "chroot" ]; then 
+                sudo mv edit/etc/resolv.conf edit/etc/resolv.conf_remasterkit
+		sudo cp -i /etc/resolv.conf edit/etc/resolv.conf
+		echo "mount -t proc proc /proc ; mount -t sysfs sys /sys ; > /root/.bash_history ; rm /tmp/mount" > edit/tmp/mount
+		sudo chmod +x edit/tmp/mount
+		sudo chroot edit /tmp/mount
+		sudo mount -o bind /dev/pts edit/dev/pts
+		sudo mount -o bind /dev edit/dev
+		sudo chroot edit
+		sudo mv edit/etc/resolv.conf_remasterkit edit/etc/resolv.conf
+		sudo chroot edit apt-get clean
+		sudo rm edit/root/.bash_history
+		sudo umount -l edit/dev/pts
+		sudo umount -l edit/dev
+		sudo umount -l edit/proc
+		sudo umount -l edit/sys
+	fi # chroot if
+        if [ $1 = "chroot-prevent-apt-cache" ]; then 
+                sudo mv edit/etc/resolv.conf edit/etc/resolv.conf_remasterkit
+		sudo cp -i /etc/resolv.conf edit/etc/resolv.conf
+		echo "mount -t proc proc /proc ; mount -t sysfs sys /sys ; > /root/.bash_history ; rm /tmp/mount" > edit/tmp/mount
+		sudo chmod +x edit/tmp/mount
+		sudo chroot edit /tmp/mount
+		sudo mount -o bind /dev/pts edit/dev/pts
+		sudo mount -o bind /dev edit/dev
+		sudo chroot edit
+		sudo mv edit/etc/resolv.conf_remasterkit edit/etc/resolv.conf
+		sudo rm edit/root/.bash_history
+		sudo umount -l edit/dev/pts
+		sudo umount -l edit/dev
+		sudo umount -l edit/proc
+		sudo umount -l edit/sys
+	fi # chroot if
+	if [ $1 = "build" ]; then
+		if [ $# -lt 3 ]; then
+			help1
+		else
+			if [ -f extract-cd/$VER/filesystem.squashfs ]; then
+				read -p "Do you want to delete filesystem.squashfs (Y/n)?"
+			        [ "$REPLY" == "n" ] || sudo rm extract-cd/$VER/filesystem.squashfs
+			fi
+			if [ "$SQFS" == "lzma" ]; then
+				sudo mksquashfs-lzma edit extract-cd/live/filesystem.squashfs -lzma
+                        elif [ "$SQFS" == "xz" ]; then
+                                sudo mksquashfs edit extract-cd/$VER/filesystem.squashfs -comp xz 
+                        elif [ "$SQFS" == "lzo" ]; then
+                                sudo mksquashfs edit extract-cd/$VER/filesystem.squashfs -comp lzo 
+			else
+				sudo mksquashfs edit extract-cd/$VER/filesystem.squashfs
+			fi
+			echo "LiveSystem packed in Filesystem.squashfs"
+			sudo chmod a+w extract-cd/$VER/filesystem.manifest
+			sudo chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/$VER/filesystem.manifest
+			sudo cp extract-cd/$VER/filesystem.manifest extract-cd/$VER/filesystem.manifest-desktop
+			sudo sed -i '/ubiquity/d' extract-cd/$VER/filesystem.manifest-desktop
+			echo "Filesystem.manifest edited for ubiquity"
+			cd extract-cd
+			# Create md5 sum for cd checking
+			sudo rm md5sum.txt
+			sudo find . -type f -print0 |xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee /tmp/md5sum.txt
+                        sudo mv /tmp/md5sum.txt .
+			sudo $MKISOFS -r -V $2 -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../$3 .
+			cd .. ;
+			read -p "Do you want to create an hybrid iso (useful for dd'ing onto USB Stick) (Y/n)?"
+			        [ "$REPLY" == "n" ] || sudo isohybrid $3;
+			md5sum $3 > $3.md5
+		fi # build arguments if
+	fi # build if
+	if [ $1 = "buildiso" ]; then
+		if [ $# -lt 3 ]; then
+			help1
+		else
+			cd extract-cd
+			# Create md5 sum for cd checking
+			sudo rm md5sum.txt
+			sudo find . -type f -print0 |xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee /tmp/md5sum.txt
+                        sudo mv /tmp/md5sum.txt .
+			sudo $MKISOFS -r -V $2 -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../$3 .
+			cd .. ; md5sum $3 > $3.md5
+		fi # buildiso arguments if
+	fi # buildiso if
+	if [ $1 = "hybridiso" ]; then
+		if [ $# -lt 2 ]; then
+			help1
+		else
+			sudo isohybrid $2; md5sum $2 > $2.md5
+		fi # hybridiso arguments if
+	fi # hybridiso if
+	if [ $1 = "clean" ]; then
+		sudo umount squashfs
+		sudo umount mnt
+	fi # clean if
+	if [ $1 = "remove" ]; then
+		if [ -d $2 ] 
+		then
+			sudo rm -ir $2
+		elif [ -d "../${2}" ]
+		then
+			sudo rm -ir "../${2}"
+		fi
+	fi # remove if
+	if [ $1 = "merge" ]; then
+		mkdir -p /tmp/remaster-kit-snapshot-merge
+		sudo mount -o loop $2 /tmp/remaster-kit-snapshot-merge
+                if [ $? != 0 ]; then
+		      echo "Error mounting Snapshot"
+		      exit -1;
+		else
+		      echo "===Mounted Snapshot==="
+		      echo "===Start merging snapshot...==="
+		      sudo rsync -av /tmp/remaster-kit-snapshot-merge/ edit/ --progress
+		      if [ $? != 0 ]; then
+			      echo "===Error merging Snapshot==="
+                              sudo umount /tmp/remaster-kit-snapshot-merge
+                              rmdir /tmp/remaster-kit-snapshot-merge
+			      exit -1;
+		      else
+		      echo "===Merged Snapshot==="
+		      sudo umount /tmp/remaster-kit-snapshot-merge
+                      rmdir /tmp/remaster-kit-snapshot-merge
+		      fi # error merging
+		fi # error mounting
+	fi # merge if      
+        if [ $1 = "save-live" ]; then
+                if [ $# -gt 1 ]; then
+                        sudo rsync --exclude={/media,/live,/var/log,/var/cache,/tmp} -av / $2/edit ;
+                        sudo mkdir -p $2/edit/media $2/edit/var/log $2/edit/var/cache $2/edit/tmp;
+			if [ "$SQFS" == "lzma" ]; then
+				sudo mksquashfs-lzma $2/edit $2/extract-cd/live/filesystem.squashfs -lzma
+                        elif [ "$SQFS" == "xz" ]; then
+                                sudo mksquashfs $2/edit $2/extract-cd/$VER/filesystem.squashfs -comp xz 
+                        elif [ "$SQFS" == "lzo" ]; then
+                                sudo mksquashfs $2/edit $2/extract-cd/$VER/filesystem.squashfs -comp lzo 
+			else
+				sudo mksquashfs $2/edit $2/extract-cd/$VER/filesystem.squashfs
+			fi # SQFS if
+                        if [ $? != 0 ]; then
+		                echo "Error packaging filesystem.squashfs"
+		                exit -1;
+                        else
+			        echo "LiveSystem packed in Filesystem.squashfs"
+                        fi # Error if
+               else
+                        echo -n $0
+                        echo " save-live <Projectdirectory> "
+               fi # gt1 if
+       fi # save-live if
+fi #main if
+
+
