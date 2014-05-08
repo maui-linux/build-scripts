@@ -31,7 +31,7 @@ apt-get install virtualbox-qt virtualbox-guest-dkms virtualbox-guest-x11 veromix
 # Games
 apt-get install ktron glchess kbreakout kmines kmahjongg frozen-bubble kdiamond gltron burgerspace gnudoq kpat
 # Archiving support
-apt-get install p7zip-full unrar
+apt-get install p7zip-full unrar rar
 # From Ubuntu Partner
 apt-get install skype
 echo " -------------------------------------"
