@@ -27,13 +27,13 @@ apt-get install firefox firefox-kde-support plasma-widget-folderview plasma-widg
 # Codecs and Flashplayer
 apt-get install kubuntu-restricted-extras ubuntu-restricted-extras libav-tools kffmpegthumbnailer
 # Universe
-apt-get install virtualbox-qt virtualbox-guest-dkms virtualbox-guest-x11 veromix-common plasma-widget-veromix plasma-scriptengine-python python-xdg python-qt4-dbus kio-mtp ndisgtk ndiswrapper-dkms vlc-plugin-pulse virtualbox-dkms samba cifs-utils ndiswrapper-common ndiswrapper-utils-1.9 qtcurve thunderbird vlc filezilla qmmp transmission-qt konqueror yakuake krita gimp pidgin synaptic kdenlive clementine calligraflow muon-discover libreoffice libreoffice-gtk libreoffice-style-human openjdk-7-jre icedtea-7-plugin kscreensaver kscreensaver-xsavers ttf-mscorefonts-installer ttf-liberation fonts-roboto fonts-droid kpart-webkit apturl-kde apturl-common gstreamer1.0-libav frei0r-plugins software-properties-gtk dmz-cursor-theme gnome-icon-theme gnome-icon-theme-full gtk2-engines gtk2-engines-murrine gtk2-engines-oxygen gtk3-engines-oxygen gtk3-engines-unico konversation plasma-widget-homerun-kicker
+apt-get install virtualbox-qt virtualbox-guest-dkms virtualbox-guest-x11 veromix-common plasma-widget-veromix plasma-scriptengine-python python-xdg python-qt4-dbus kio-mtp ndisgtk ndiswrapper-dkms vlc-plugin-pulse virtualbox-dkms samba cifs-utils ndiswrapper-common ndiswrapper-utils-1.9 qtcurve thunderbird vlc filezilla qmmp transmission-qt konqueror yakuake krita gimp pidgin synaptic kdenlive clementine calligraflow muon-discover libreoffice libreoffice-gtk libreoffice-style-human openjdk-7-jre icedtea-7-plugin kscreensaver kscreensaver-xsavers ttf-mscorefonts-installer ttf-liberation fonts-roboto fonts-droid kpart-webkit apturl-kde apturl-common gstreamer1.0-libav frei0r-plugins software-properties-gtk dmz-cursor-theme gnome-icon-theme gnome-icon-theme-full gtk2-engines gtk2-engines-murrine gtk2-engines-oxygen gtk3-engines-oxygen gtk3-engines-unico konversation plasma-widget-homerun-kicker kde-telepathy-call-ui kaccount-providers
 # Games
 apt-get install ktron glchess kbreakout kmines kmahjongg frozen-bubble kdiamond gltron burgerspace gnudoq kpat
 # Archiving support
 apt-get install p7zip-full unrar rar
 # From Ubuntu Partner
-apt-get install skype
+apt-get install skype # TODO: This is a mess for 64bit. It needs dpkg --add-architecture i686 first and then is installable though ~250MB will be downloaded for it.
 echo " -------------------------------------"
 echo "googletalk-plugin installation"
 echo " -------------------------------------"
@@ -76,3 +76,6 @@ case "$answer" in
                 echo "Aborting as no valid user input"
                 ;;
 esac
+# From Frontier-Packages ppa
+apt-get install netrunner-desktop netrunner-default-settings netrunner-artwork netrunner-artwork-backgrounds netrunner-artwork-firefox netrunner-artwork-thunderbird netrunner-artwors netrunner-system netrunner-systemsettings-settings
+apt-get install base-files=6.12ubuntu5+netrunner6 rootactions-servicemenu ubiquity-slideshow-netrunner kcm-baloo-advanced
