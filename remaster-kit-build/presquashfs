@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /usr/share/remaster-kit/functions
+
+./$BUILD_DIR/addsourceslist.sh
+./$BUILD_DIR/removepackages.sh
+./$BUILD_DIR/addpackages.sh 

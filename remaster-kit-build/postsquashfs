@@ -1,0 +1,54 @@
+#!/bin/bash
+
+source /usr/share/remaster-kit/functions
+
+function set_arch {
+echo " -------------------------------------"
+echo "Disk info configuration"
+echo " -------------------------------------"
+read -p "32bit or 64bit version? " answer
+case "$answer" in
+        *32*)
+                echo "Writing 32bit version settings in info file ... "
+		sed -i "s/\$ARCH/i386/g" extract-cd/.disk/info
+                ;;
+        *64*)   echo "Downloading 64bit version ... "
+		sed -i "s/\$ARCH/amd64/g" extract-cd/.disk/info
+                ;;
+        *)
+                echo "Aborting as no valid user input"
+                ;;
+esac
+# Write current date to info file aswell
+CUR_DATE=$(date +%Y%m%d)
+sed -i "s/\$DATE/$CUR_DATE/g" extract-cd/.disk/info
+}
+
+if [ -e $BUILD_DIR/extract-cd/isolinux ] && [ -e extract-cd/isolinux ]; then
+	# Replace isolinux from extract-cd
+	sudo rm -r extract-cd/isolinux
+	sudo cp -r $BUILD_DIR/extract-cd/isolinux extract-cd/
+fi
+
+if [ -e $BUILD_DIR/extract-cd/boot ] && [ -e extract-cd/boot ]; then
+	# Replace boot from extract-cd
+	sudo rm -r extract-cd/boot
+	sudo cp -r $BUILD_DIR/extract-cd/boot extract-cd/
+fi
+
+if [ -e $BUILD_DIR/extract-cd/.disk ] && [ -e extract-cd/.disk ]; then
+	# Replace .disk from extract-cd
+	sudo rm -r extract-cd/.disk
+	sudo cp -r $BUILD_DIR/extract-cd/.disk extract-cd/
+	set_arch
+fi
+
+if [ -e $BUILD_DIR/extract-cd/preseed ] && [ -e extract-cd/preseed ]; then
+	# Add preseed from extract-cd
+	sudo cp -r $BUILD_DIR/extract-cd/preseed/* extract-cd/preseed/
+fi
+
+# Update Initrd on ISO
+initrd_name=$(find extract-cd/$VER/ -iname "initrd*")
+echo "Updating $initrd_name..."
+sudo cp edit/boot/initrd* $initrd_name
