@@ -17,7 +17,7 @@ function install_gtalk_plugin {
 echo " -------------------------------------"
 echo "googletalk-plugin installation"
 echo " -------------------------------------"
-read -p "Download and install 32bit or 64bit version? " answer
+read -p "Download and install 32bit or 64bit version? " answer  # TODO: This needs to be done in remaster-kit to not nag the user in autobuild
 case "$answer" in
         *32*)
                 echo "Downloading 32bit version ... "

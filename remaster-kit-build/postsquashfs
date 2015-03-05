@@ -6,7 +6,7 @@ function set_arch {
 echo " -------------------------------------"
 echo "Disk info configuration"
 echo " -------------------------------------"
-read -p "32bit or 64bit version? " answer
+read -p "32bit or 64bit version? " answer  # TODO: This needs to be done in remaster kit to not nag user in autobuild
 case "$answer" in
         *32*)
                 echo "Writing 32bit version settings in info file ... "
