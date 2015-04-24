@@ -2,16 +2,6 @@
 
 source /usr/share/remaster-kit/functions
 
-if [ -e $BUILD_DIR/packages-add.txt ]; then
-	packages_to_add=`cat $BUILD_DIR/packages-add.txt`
-	install_gtalk_plugin
-	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
-	exec_in_chroot "apt-get update"
-	exec_in_chroot "apt-get install $packages_to_add"
-	exec_in_chroot "apt-get install base-files=6.12ubuntu5+netrunner6"
-	exec_in_chroot "update-initramfs -u"
-fi
-
 function install_gtalk_plugin {
 
 echo " -------------------------------------"
@@ -37,3 +27,13 @@ case "$answer" in
 esac
 
 }
+
+if [ -e $BUILD_DIR/packages-add.txt ]; then
+	packages_to_add=`cat $BUILD_DIR/packages-add.txt`
+	install_gtalk_plugin
+	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
+	exec_in_chroot "apt-get update"
+	exec_in_chroot "apt-get install $packages_to_add"
+	exec_in_chroot "apt-get install base-files=6.12ubuntu5+netrunner6"
+	exec_in_chroot "update-initramfs -u"
+fi
