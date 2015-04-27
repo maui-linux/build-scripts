@@ -33,6 +33,7 @@ if [ -e $BUILD_DIR/packages-add.txt ]; then
 	install_gtalk_plugin
 	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
 	exec_in_chroot "apt-get update"
+	exec_in_chroot "apt-get dist-upgrade"
 	exec_in_chroot "apt-get install $packages_to_add"
 	exec_in_chroot "apt-get install base-files=7.2ubuntu9+netrunner6"
 	exec_in_chroot "update-initramfs -u"
