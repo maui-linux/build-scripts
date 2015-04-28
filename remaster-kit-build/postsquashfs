@@ -10,10 +10,10 @@ read -p "32bit or 64bit version? " answer  # TODO: This needs to be done in rema
 case "$answer" in
         *32*)
                 echo "Writing 32bit version settings in info file ... "
-		sed -i "s/\$ARCH/i386/g" extract-cd/.disk/info
+		sudo sed -i "s/\$ARCH/i386/g" extract-cd/.disk/info
                 ;;
         *64*)   echo "Downloading 64bit version ... "
-		sed -i "s/\$ARCH/amd64/g" extract-cd/.disk/info
+		sudo sed -i "s/\$ARCH/amd64/g" extract-cd/.disk/info
                 ;;
         *)
                 echo "Aborting as no valid user input"
