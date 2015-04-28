@@ -52,3 +52,11 @@ fi
 initrd_name=$(find extract-cd/$VER/ -iname "initrd*")
 echo "Updating $initrd_name..."
 sudo cp edit/boot/initrd* $initrd_name
+
+# Update Vmlinuz on ISO
+vmlinuz_name=$(find extract-cd/$VER/ -iname "vmlinuz*")
+echo "Updating $vmlinuz_name..."
+sudo cp edit/boot/vmlinuz* $vmlinuz_name
+if [ -e extract-cd/$VER/vmlinuz.efi ]; then
+	cp extract-cd/$VER/vmlinuz.efi extract-cd/$VER/vmlinuz
+fi

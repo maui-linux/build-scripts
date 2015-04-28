@@ -37,4 +37,5 @@ if [ -e $BUILD_DIR/packages-add.txt ]; then
 	exec_in_chroot "apt-get install $packages_to_add"
 	exec_in_chroot "apt-get install base-files=7.2ubuntu9+netrunner6"
 	exec_in_chroot "update-initramfs -u"
+        exec_in_chroot "apt-get autoremove" # Remove old kernel versions and unneeded stuff
 fi
