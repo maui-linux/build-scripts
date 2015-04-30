@@ -10,10 +10,10 @@ read -p "32bit or 64bit version? " answer  # TODO: This needs to be done in rema
 case "$answer" in
         *32*)
                 echo "Writing 32bit version settings in info file ... "
-		sudo sed -i "s/\$ARCH/i386/g" extract-cd/.disk/info
+		sed -i "s/\$ARCH/i386/g" extract-cd/.disk/info
                 ;;
         *64*)   echo "Downloading 64bit version ... "
-		sudo sed -i "s/\$ARCH/amd64/g" extract-cd/.disk/info
+		sed -i "s/\$ARCH/amd64/g" extract-cd/.disk/info
                 ;;
         *)
                 echo "Aborting as no valid user input"
@@ -27,19 +27,19 @@ sed -i "s/\$DATE/$CUR_DATE/g" extract-cd/.disk/info
 if [ -e $BUILD_DIR/extract-cd/isolinux ] && [ -e extract-cd/isolinux ]; then
 	# Replace isolinux from extract-cd
 	sudo rm -r extract-cd/isolinux
-	sudo cp -r $BUILD_DIR/extract-cd/isolinux extract-cd/
+	sudo cp -a $BUILD_DIR/extract-cd/isolinux extract-cd/
 fi
 
 if [ -e $BUILD_DIR/extract-cd/boot ] && [ -e extract-cd/boot ]; then
 	# Replace boot from extract-cd
 	sudo rm -r extract-cd/boot
-	sudo cp -r $BUILD_DIR/extract-cd/boot extract-cd/
+	sudo cp -a $BUILD_DIR/extract-cd/boot extract-cd/
 fi
 
 if [ -e $BUILD_DIR/extract-cd/.disk ] && [ -e extract-cd/.disk ]; then
 	# Replace .disk from extract-cd
 	sudo rm -r extract-cd/.disk
-	sudo cp -r $BUILD_DIR/extract-cd/.disk extract-cd/
+	sudo cp -a $BUILD_DIR/extract-cd/.disk extract-cd/
 	set_arch
 fi
 
@@ -55,8 +55,10 @@ sudo cp edit/boot/initrd* $initrd_name
 
 # Update Vmlinuz on ISO
 vmlinuz_name=$(find extract-cd/$VER/ -iname "vmlinuz*")
-echo "Updating $vmlinuz_name..."
-sudo cp edit/boot/vmlinuz-* $vmlinuz_name
+if [ -e edit/boot/vmlinuz-* ]; then
+	echo "Updating $vmlinuz_name..."
+	sudo cp edit/boot/vmlinuz-* $vmlinuz_name
+fi
 if [ -e extract-cd/$VER/vmlinuz.efi ]; then
 	sudo cp extract-cd/$VER/vmlinuz.efi extract-cd/$VER/vmlinuz
 fi
