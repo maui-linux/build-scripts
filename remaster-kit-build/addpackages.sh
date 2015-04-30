@@ -29,7 +29,7 @@ esac
 }
 
 if [ -e $BUILD_DIR/packages-add.txt ]; then
-	packages_to_add=`cat $BUILD_DIR/packages-add.txt`
+	packages_to_add=`cat $BUILD_DIR/packages-add.txt | tr -d '\n'`
 	install_gtalk_plugin
 	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
 	exec_in_chroot "apt-get update"
