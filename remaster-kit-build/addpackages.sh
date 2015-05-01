@@ -39,4 +39,5 @@ if [ -e $BUILD_DIR/packages-add.txt ]; then
 	exec_in_chroot "apt-get install ubiquity=2.21.23-netrunner2 ubiquity-slideshow-netrunner ubiquity-frontend-kde=2.21.23-netrunner2 ubiquity-ubuntu-artwork=2.21.23-netrunner2"
 	exec_in_chroot "update-initramfs -u"
         exec_in_chroot "apt-get autoremove" # Remove old kernel versions and unneeded stuff
+        exec_in_chroot "apt-get remove brasero brasero-cdrkit brasero-common libbrasero-media3-1" # Remove brasero installed by packagelist-add.txt (TODO: maybe --no-install-recommends)
 fi

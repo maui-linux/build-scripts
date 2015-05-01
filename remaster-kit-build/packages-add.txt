@@ -71,11 +71,11 @@ p7zip-full
 pidgin 
 plasma-widget-folderview 
 python-appindicator
-python-xdg python-qt4-dbus 
+python-qt4-dbus 
+python-xdg 
 qtcurve-l10n 
 rar 
-rootactions-servicemenu 
-rootactions-servicemenu 
+rootactions-servicemenu  
 samba 
 samba-mounter 
 skype 
