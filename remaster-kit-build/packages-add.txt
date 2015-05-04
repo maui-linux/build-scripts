@@ -1,7 +1,6 @@
 apturl-common
 apturl-kde
 burgerspace
-calligraflow
 cifs-utils
 dmz-cursor-theme
 expanding-icons-taskmanager
