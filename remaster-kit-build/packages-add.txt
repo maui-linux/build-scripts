@@ -73,6 +73,7 @@ plasma-widget-folderview
 python-appindicator
 python-qt4-dbus
 python-xdg
+qml-module-org-kde-games-core
 qtcurve-l10n
 rar
 rootactions-servicemenu
