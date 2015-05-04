@@ -1,10 +1,10 @@
 apturl-common
 apturl-kde
+audacious
 burgerspace
 cifs-utils
 dmz-cursor-theme
 expanding-icons-taskmanager
-filezilla
 firefox-plasma
 fonts-droid
 fonts-roboto
