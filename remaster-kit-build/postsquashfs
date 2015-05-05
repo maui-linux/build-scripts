@@ -51,13 +51,15 @@ fi
 # Update Initrd on ISO
 initrd_name=$(find extract-cd/$VER/ -iname "initrd*")
 echo "Updating $initrd_name..."
-sudo cp edit/boot/initrd* $initrd_name
+initrd_live=$(ls edit/boot/initrd* | tr -t ' ' '\n' | sort -V -r | head -n1)
+sudo cp $initrd_live $initrd_name
 
 # Update Vmlinuz on ISO
 vmlinuz_name=$(find extract-cd/$VER/ -iname "vmlinuz*")
-if [ -e edit/boot/vmlinuz-* ]; then
+if [[ -e edit/boot/vmlinuz-* ]]; then
 	echo "Updating $vmlinuz_name..."
-	sudo cp edit/boot/vmlinuz-* $vmlinuz_name
+        vmlinuz_live=$(ls edit/boot/vmlinuz-* | tr -t ' ' '\n' | sort -V -r | head -n1)
+	sudo cp $vmlinuz_live $vmlinuz_name
 fi
 if [ -e extract-cd/$VER/vmlinuz.efi ]; then
 	sudo cp extract-cd/$VER/vmlinuz.efi extract-cd/$VER/vmlinuz
