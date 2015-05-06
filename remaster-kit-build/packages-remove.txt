@@ -18,7 +18,6 @@ libreoffice-base
 libreoffice-gnome
 libreoffice-kde
 libreoffice-style-oxygen
-libreoffice-style-breeze
 libreoffice-style-tango
 plymouth-theme-kubuntu-logo
 plymouth-theme-kubuntu-text
