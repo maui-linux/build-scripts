@@ -56,7 +56,8 @@ sudo cp $initrd_live $initrd_name
 
 # Update Vmlinuz on ISO
 vmlinuz_name=$(find extract-cd/$VER/ -iname "vmlinuz*")
-if [[ -e edit/boot/vmlinuz-* ]]; then
+vmlinuz_exists=$(ls edit/boot/vmlinuz-* 2> /dev/null | wc -l)
+if [ "$vmlinuz_exists" != "0" ]; then
 	echo "Updating $vmlinuz_name..."
         vmlinuz_live=$(ls edit/boot/vmlinuz-* | tr -t ' ' '\n' | sort -V -r | head -n1)
 	sudo cp $vmlinuz_live $vmlinuz_name
