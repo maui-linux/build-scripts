@@ -3,6 +3,6 @@
 source /usr/share/remaster-kit/functions
 
 ./$BUILD_DIR/addsourceslist.sh
-./$BUILD_DIR/removepackages.sh
+./$BUILD_DIR/removepackages.sh # TODO: see if swapping removepackages.sh with addpackages.sh works
 ./$BUILD_DIR/addpackages.sh 
 ./$BUILD_DIR/removepackages.sh # Just to make sure
