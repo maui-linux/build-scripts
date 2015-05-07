@@ -95,4 +95,5 @@ virtualbox-qt
 vlc
 vlc-plugin-pulse
 vokoscreen
+xterm
 yakuake
