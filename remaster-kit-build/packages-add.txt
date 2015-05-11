@@ -24,6 +24,7 @@ gtk2-engines-qtcurve
 gtk3-engines-oxygen
 gtk3-engines-unico
 icedtea-7-plugin
+karbon
 kbreakout
 kde-config-gtk-style
 kdenlive

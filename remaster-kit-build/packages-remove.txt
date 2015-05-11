@@ -7,7 +7,6 @@ calligrasheets
 calligrastage
 calligraflow
 dragonplayer
-karbon
 kde-config-whoopsie
 kexi
 kopete
