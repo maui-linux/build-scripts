@@ -71,6 +71,7 @@ netrunner-systemsettings-settings
 openjdk-7-jre
 p7zip-full
 pidgin
+pidgin-indicator
 plasma-widget-folderview
 python-appindicator
 python-qt4-dbus
