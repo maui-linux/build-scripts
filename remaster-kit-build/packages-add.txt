@@ -2,6 +2,8 @@ apturl-common
 apturl-kde
 audacious
 burgerspace
+carbon-widget-style-qt4
+carbon-widget-style-qt5
 cifs-utils
 dmz-cursor-theme
 expanding-icons-taskmanager
