@@ -30,6 +30,7 @@ karbon
 kbreakout
 kde-config-gtk-style
 kdenlive
+kdepim-runtime
 kde-telepathy-call-ui
 kdiamond
 kffmpegthumbnailer
