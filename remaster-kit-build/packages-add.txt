@@ -20,9 +20,11 @@ gnome-icon-theme-full
 gnudoq
 gstreamer1.0-libav
 gtk2-engines
+gtk2-engines-carbon
 gtk2-engines-murrine
 gtk2-engines-oxygen
 gtk2-engines-qtcurve
+gtk3-engines-carbon
 gtk3-engines-oxygen
 gtk3-engines-unico
 icedtea-7-plugin
