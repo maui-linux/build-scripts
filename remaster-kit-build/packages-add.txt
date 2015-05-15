@@ -81,7 +81,6 @@ python-qt4-dbus
 python-xdg
 qml-module-org-kde-games-core
 qtcurve
-qtcurve-l10n
 rar
 rootactions-servicemenu
 samba
