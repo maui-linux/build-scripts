@@ -8,6 +8,8 @@ calligrastage
 calligraflow
 dragonplayer
 kde-config-whoopsie
+kde-telepathy
+kde-telepathy-legacy-presence-applet
 kexi
 kopete
 kpat

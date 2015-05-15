@@ -33,7 +33,7 @@ kbreakout
 kde-config-gtk-style
 kdenlive
 kdepim-runtime
-kde-telepathy-call-ui
+kde-telepathy-desktop-applets
 kdiamond
 kffmpegthumbnailer
 kio-mtp
@@ -52,6 +52,7 @@ libav-tools
 libgtk2-appindicator-perl
 libkfbapi1
 libmailtransport4
+libqt5websockets5
 libreoffice
 libreoffice-gtk
 libreoffice-style-human
@@ -79,12 +80,14 @@ python-appindicator
 python-qt4-dbus
 python-xdg
 qml-module-org-kde-games-core
+qtcurve
 qtcurve-l10n
 rar
 rootactions-servicemenu
 samba
 samba-mounter
 skype
+smbclient
 software-properties-gtk
 synaptic
 thunderbird-plasma
