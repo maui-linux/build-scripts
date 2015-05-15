@@ -7,12 +7,15 @@ carbon-widget-style-qt5
 cifs-utils
 dmz-cursor-theme
 expanding-icons-taskmanager
+firefox-locale-en
 firefox-plasma
 fonts-droid
 fonts-roboto
 frei0r-plugins
 frozen-bubble
 gimp
+gimp-help-common
+gimp-help-en
 glchess
 gltron
 gnome-icon-theme
@@ -27,6 +30,7 @@ gtk2-engines-qtcurve
 gtk3-engines-carbon
 gtk3-engines-oxygen
 gtk3-engines-unico
+hyphen-en-us
 icedtea-7-plugin
 karbon
 kbreakout
@@ -48,6 +52,8 @@ krita
 ksnakeduel
 ksuperkey
 kubuntu-restricted-extras
+language-pack-gnome-en
+language-pack-gnome-en-base
 libav-tools
 libgtk2-appindicator-perl
 libkfbapi1
@@ -55,9 +61,14 @@ libmailtransport4
 libqt5websockets5
 libreoffice
 libreoffice-gtk
+libreoffice-help-en-us
 libreoffice-style-human
 mozilla-kde-support
 muon-discover
+myspell-en-au
+myspell-en-gb
+myspell-en-za
+mythes-en-us
 ndisgtk
 ndiswrapper-common
 ndiswrapper-dkms
@@ -89,6 +100,8 @@ skype
 smbclient
 software-properties-gtk
 synaptic
+thunderbird-locale-en
+thunderbird-locale-en-us
 thunderbird-plasma
 transmission-qt
 ttf-liberation
@@ -103,5 +116,6 @@ virtualbox-qt
 vlc
 vlc-plugin-pulse
 vokoscreen
+wbritish
 xterm
 yakuake
