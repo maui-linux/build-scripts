@@ -117,5 +117,6 @@ vlc
 vlc-plugin-pulse
 vokoscreen
 wbritish
+wordwarvi
 xterm
 yakuake
