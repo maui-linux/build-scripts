@@ -65,3 +65,10 @@ fi
 if [ -e extract-cd/$VER/vmlinuz.efi ]; then
 	sudo cp extract-cd/$VER/vmlinuz.efi extract-cd/$VER/vmlinuz
 fi
+
+# Update filesystem.size for Ubiquity installer
+if [ -e $BUILD_DIR/extract-cd/$VER/filesystem.size ]; then
+	echo "Updating filesystem.size..."
+        sudo chmod a+w $BUILD_DIR/extract-cd/$VER/filesystem.size # Just to make sure it is writeable
+	printf $(sudo du -sx --block-size=1 $BUILD_DIR/edit | cut -f1) > $BUILD_DIR/extract-cd/$VER/filesystem.size
+fi
