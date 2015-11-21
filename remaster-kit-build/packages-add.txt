@@ -10,6 +10,7 @@ expanding-icons-taskmanager
 firefox-locale-en
 firefox-plasma
 fonts-droid
+fonts-noto-hinted
 fonts-roboto
 frei0r-plugins
 frozen-bubble
