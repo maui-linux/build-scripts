@@ -30,12 +30,12 @@ esac
 
 function install_steam {
 
-echo " -------------------------------------"
-echo "Steam installation"
-echo " -------------------------------------"
-exec_in_chroot "wget -c http://media.steampowered.com/client/installer/steam.deb -O /tmp/steam.deb" ;
-exec_in_chroot "dpkg -i /tmp/steam.deb" ;
-exec_in_chroot "apt-get install -f" ;
+# echo " -------------------------------------"
+# echo "Steam installation"
+# echo " -------------------------------------"
+# exec_in_chroot "wget -c http://media.steampowered.com/client/installer/steam.deb -O /tmp/steam.deb" ;
+# exec_in_chroot "dpkg -i /tmp/steam.deb" ;
+# exec_in_chroot "apt-get install -f" ;
 
 }
 
