@@ -7,6 +7,7 @@ calligrasheets
 calligrastage
 calligraflow
 dragonplayer
+grub-theme-breeze
 kde-config-whoopsie
 kde-telepathy
 kde-telepathy-legacy-presence-applet
@@ -21,10 +22,14 @@ libreoffice-gnome
 libreoffice-kde
 libreoffice-style-oxygen
 libreoffice-style-tango
+plymouth-theme-breeze
 plymouth-theme-kubuntu-logo
 plymouth-theme-kubuntu-text
 quassel
 quassel-data
 rekonq
+ubiquity-slideshow-neon
+neon-settings
 whoopsie
 whoopsie-preferences
+wordwarvi
