@@ -63,7 +63,7 @@ if [ "$vmlinuz_exists" != "0" ]; then
 	sudo cp $vmlinuz_live $vmlinuz_name
 fi
 if [ -e extract-cd/$VER/vmlinuz.efi ]; then
-	sudo cp extract-cd/$VER/vmlinuz.efi extract-cd/$VER/vmlinuz
+	sudo cp extract-cd/$VER/vmlinuz extract-cd/$VER/vmlinuz.efi
 fi
 
 # Update filesystem.size for Ubiquity installer
