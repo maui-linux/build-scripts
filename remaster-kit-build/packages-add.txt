@@ -64,6 +64,8 @@ libreoffice
 libreoffice-gtk
 libreoffice-help-en-us
 libreoffice-style-human
+libreoffice-impress
+libreoffice-calc
 mozilla-kde-support
 muon-discover
 myspell-en-au
