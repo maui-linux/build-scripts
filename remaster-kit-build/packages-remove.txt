@@ -6,6 +6,8 @@ calligraplan
 calligrasheets
 calligrastage
 calligraflow
+discover
+discover-data
 dragonplayer
 grub-theme-breeze
 kde-config-whoopsie
@@ -22,6 +24,7 @@ libreoffice-gnome
 libreoffice-kde
 libreoffice-style-oxygen
 libreoffice-style-tango
+plasma-discover
 plymouth-theme-breeze
 plymouth-theme-kubuntu-logo
 plymouth-theme-kubuntu-text

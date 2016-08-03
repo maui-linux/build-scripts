@@ -2,6 +2,9 @@
 
 source /usr/share/remaster-kit/functions
 
+BASE_FILES_VER="9+p8+git20160802.1052"
+UBIQUITY_VER="2.21.63.1+p16.04+git20160802.1206"
+
 function install_gtalk_plugin {
 
 echo " -------------------------------------"
@@ -41,14 +44,14 @@ exec_in_chroot "apt-get install -f" ;
 
 if [ -e $BUILD_DIR/packages-add.txt ]; then
 	packages_to_add=`cat $BUILD_DIR/packages-add.txt | tr -t '\n' ' '`
-	install_gtalk_plugin
+	#install_gtalk_plugin
 	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
 	exec_in_chroot "apt-get update"
         #install_steam
 	exec_in_chroot "apt-get dist-upgrade"
 	exec_in_chroot "apt-get install $packages_to_add"
-	exec_in_chroot "apt-get install base-files=7.2ubuntu9+netrunner8"
-	exec_in_chroot "apt-get install ubiquity=2.21.37-netrunner5 ubiquity-slideshow-netrunner ubiquity-frontend-kde=2.21.37-netrunner5 ubiquity-ubuntu-artwork=2.21.37-netrunner5"
+	exec_in_chroot "apt-get install base-files=$BASE_FILES_VER"
+	exec_in_chroot "apt-get install ubiquity=$UBIQUITY_VER ubiquity-slideshow-maui ubiquity-frontend-kde=$UBIQUITY_VER ubiquity-ubuntu-artwork=$UBIQUITY_VER"
 	exec_in_chroot "update-initramfs -u"
         exec_in_chroot "apt-get autoremove" # Remove old kernel versions and unneeded stuff
         exec_in_chroot "apt-get remove brasero brasero-cdrkit brasero-common libbrasero-media3-1 libreoffice-style-breeze nautilus nautilus-sendto" # Remove brasero installed by packagelist-add.txt (TODO: maybe --no-install-recommends)
