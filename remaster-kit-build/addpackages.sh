@@ -3,7 +3,7 @@
 source /usr/share/remaster-kit/functions
 
 BASE_FILES_VER="9+p8+git20160802.1052"
-UBIQUITY_VER="2.21.63.1+p16.04+git20160803.1423"
+UBIQUITY_VER="2.21.63.1+p16.04+git20160804.1104"
 
 function install_gtalk_plugin {
 
