@@ -19,7 +19,7 @@ glchess
 gltron
 gnome-extra-icons
 gnome-icon-theme
-gnome-icon-theme-extra
+gnome-icon-theme-extras
 gnome-icon-theme-full
 gnudoq
 gstreamer1.0-libav
