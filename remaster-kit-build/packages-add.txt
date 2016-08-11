@@ -70,6 +70,7 @@ ndiswrapper-dkms
 ndiswrapper-utils-1.9
 default-settings-pulseaudio
 maui-desktop
+maui-fontconfig
 default-systemsettings-settings
 openjdk-8-jre
 p7zip-full
