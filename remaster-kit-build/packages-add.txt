@@ -58,6 +58,7 @@ libreoffice-help-en-us
 libreoffice-style-human
 libreoffice-impress
 libreoffice-calc
+libxcursor1:i386
 mozilla-kde-support
 muon-discover
 myspell-en-au
