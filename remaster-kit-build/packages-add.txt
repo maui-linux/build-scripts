@@ -36,6 +36,7 @@ icedtea-8-plugin
 karbon
 kbreakout
 kde-config-gtk-style
+kde-config-systemd
 kdenlive
 kdepim-runtime
 kde-telepathy-desktop-applets

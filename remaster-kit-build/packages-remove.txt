@@ -19,6 +19,7 @@ kpat
 ktorrent
 kubuntu-firefox-installer
 kubuntu-settings-desktop
+kwrite
 libreoffice-base
 libreoffice-gnome
 libreoffice-kde
