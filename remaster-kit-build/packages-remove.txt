@@ -36,4 +36,3 @@ ubiquity-slideshow-neon
 neon-settings
 whoopsie
 whoopsie-preferences
-wordwarvi

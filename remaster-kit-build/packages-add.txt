@@ -110,7 +110,6 @@ virtualbox-qt
 vlc
 vokoscreen
 wbritish
-wordwarvi
 xdgurl
 xterm
 yakuake
