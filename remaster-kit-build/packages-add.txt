@@ -7,6 +7,7 @@ calamares-casper
 calamares-maui
 cifs-utils
 dmz-cursor-theme
+easy-rsa
 expanding-icons-taskmanager
 firefox-locale-en
 firefox-plasma
@@ -74,6 +75,7 @@ ndisgtk
 ndiswrapper-common
 ndiswrapper-dkms
 ndiswrapper-utils-1.9
+network-manager-openvpn
 default-settings-pulseaudio
 maui-desktop
 maui-fontconfig
