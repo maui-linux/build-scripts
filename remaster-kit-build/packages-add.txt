@@ -36,6 +36,7 @@ hyphen-en-us
 icedtea-8-plugin
 karbon
 kbreakout
+kcalc
 kde-config-gtk-style
 kde-config-systemd
 kdenlive
