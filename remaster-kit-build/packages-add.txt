@@ -50,7 +50,6 @@ konversation
 kpat
 krita
 ksnakeduel
-ksuperkey
 kubuntu-restricted-extras
 language-pack-gnome-en
 language-pack-gnome-en-base
