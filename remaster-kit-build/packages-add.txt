@@ -34,7 +34,7 @@ gtk2-engines-oxygen
 gtk3-engines-unico
 hyphen-en-us
 icedtea-8-plugin
-karbon
+inkscape
 kbreakout
 kcalc
 kde-config-gtk-style
