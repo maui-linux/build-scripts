@@ -95,6 +95,7 @@ samba
 samba-mounter
 skype
 smbclient
+sortinglaunchers
 steam
 synaptic
 thunderbird-locale-en
