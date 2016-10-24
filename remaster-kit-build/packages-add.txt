@@ -49,6 +49,7 @@ kmahjongg
 kmines
 konversation
 kpat
+krdc
 krita
 ksnakeduel
 kubuntu-restricted-extras
