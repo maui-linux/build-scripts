@@ -42,6 +42,7 @@ kde-config-systemd
 kdenlive
 kdepim-runtime
 kde-telepathy-desktop-applets
+kde-telepathy-integration-module
 kdiamond
 kffmpegthumbnailer
 kmahjongg
