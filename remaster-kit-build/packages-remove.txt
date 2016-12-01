@@ -33,6 +33,7 @@ quassel
 quassel-data
 rekonq
 ubiquity-slideshow-neon
+unattended-upgrades
 neon-settings
 whoopsie
 whoopsie-preferences
