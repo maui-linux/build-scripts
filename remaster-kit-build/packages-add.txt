@@ -1,3 +1,4 @@
+android-sdk-platform-tools-common
 apturl-common
 apturl-kde
 audacious
@@ -56,6 +57,7 @@ kubuntu-restricted-extras
 language-pack-gnome-en
 language-pack-gnome-en-base
 libav-tools
+libdvdcss2
 libgtk2-appindicator-perl
 libkfbapi1
 libmailtransport4
@@ -91,6 +93,10 @@ python-appindicator
 python-qt4-dbus
 python-xdg
 qml-module-org-kde-games-core
+qml-module-org-kde-kirigami
+qml-module-org-kde-kirigami2
+qtdeclarative5-controls-plugin
+qtdeclarative5-window-plugin
 rar
 rootactions-servicemenu
 samba
