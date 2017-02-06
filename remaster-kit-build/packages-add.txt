@@ -46,6 +46,7 @@ kde-telepathy-desktop-applets
 kde-telepathy-integration-module
 kdiamond
 kffmpegthumbnailer
+kio-audiocd
 kmahjongg
 kmines
 konversation
