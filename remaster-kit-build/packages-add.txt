@@ -27,6 +27,7 @@ gnome-icon-theme
 gnome-icon-theme-extras
 gnome-icon-theme-full
 gnudoq
+grub-customizer
 grub-efi-amd64-bin
 gstreamer1.0-libav
 gtk2-engines
