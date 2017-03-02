@@ -1,4 +1,4 @@
 echo "I: Setting BUILD_VERSION in kcm-about-extendedrc..."
 # Set Version
 VER=$(date +%Y%m%d.%H%M)
-sed -i "s,@@BUILD_VERSION@@,$VER,g" /etc/xdg/kcm-about-extendedrc
+sed -i "s/\(BuildStamp=\).*/\1$VER/" /etc/xdg/kcm-about-extendedrc
