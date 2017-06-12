@@ -13,6 +13,7 @@ grub-theme-breeze
 kde-config-whoopsie
 kde-telepathy
 kde-telepathy-legacy-presence-applet
+kdiamond
 kexi
 knotes
 kopete
