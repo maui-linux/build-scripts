@@ -104,7 +104,6 @@ rar
 rootactions-servicemenu
 samba
 samba-mounter
-skype
 smbclient
 smplayer
 steam
