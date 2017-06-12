@@ -47,7 +47,7 @@ function install_skype {
 echo " -----------------------------------"
 echo "Skype installation"
 echo " -----------------------------------"
-exec_in_chroot "wget -c https://go.skype.com/linux.deb -O /tmp/skype.deb" ;
+exec_in_chroot "wget -c https://go.skype.com/skypeforlinux-64.deb -O /tmp/skype.deb" ;
 exec_in_chroot "dpkg -i /tmp/skype.deb" ;
 exec_in_chroot "apt-get install -f" ;
 
