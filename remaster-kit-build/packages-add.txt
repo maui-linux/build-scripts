@@ -107,6 +107,7 @@ samba
 samba-mounter
 skype
 smbclient
+smplayer
 steam
 synaptic
 thunderbird-locale-en
@@ -122,7 +123,6 @@ virtualbox-dkms
 virtualbox-guest-dkms
 virtualbox-guest-x11
 virtualbox-qt
-vlc
 vokoscreen
 wbritish
 xdgurl
