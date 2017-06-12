@@ -42,12 +42,24 @@ exec_in_chroot "apt-get install -f" ;
 
 }
 
+function install_skype {
+
+echo " -----------------------------------"
+echo "Skype installation"
+echo " -----------------------------------"
+exec_in_chroot "wget -c https://go.skype.com/linux.deb -O /tmp/skype.deb" ;
+exec_in_chroot "dpkg -i /tmp/skype.deb" ;
+exec_in_chroot "apt-get install -f" ;
+
+}
+
 if [ -e $BUILD_DIR/packages-add.txt ]; then
 	packages_to_add=`cat $BUILD_DIR/packages-add.txt | tr -t '\n' ' '`
 	#install_gtalk_plugin
 	exec_in_chroot "dpkg --add-architecture i386" # Necessary for skype
 	exec_in_chroot "apt-get update"
         #install_steam
+        install_skype
 	exec_in_chroot "apt-get dist-upgrade"
 	exec_in_chroot "apt-get install $packages_to_add"
 	exec_in_chroot "apt-get install base-files=$BASE_FILES_VER"
