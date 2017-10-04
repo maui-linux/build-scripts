@@ -7,6 +7,7 @@ calamares
 calamares-casper
 calamares-maui
 cifs-utils
+curl
 dmz-cursor-theme
 easy-rsa
 expanding-icons-taskmanager
@@ -54,6 +55,7 @@ konversation
 kpat
 krdc
 krita
+kross
 ksnakeduel
 kubuntu-restricted-extras
 language-pack-gnome-en
